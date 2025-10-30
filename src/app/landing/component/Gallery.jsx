@@ -3,10 +3,11 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const images = [
-  "/hero1.png",
-  "/hero2.png",
-  "/hero3.png",
-  "/hero4.png",
+  "/galleryimage1.jpeg",
+  "/galleryimage2.jpeg",
+  "/galleryimage3.jpeg",
+  "/galleryimage4.jpeg",
+  "/galleryimage5.jpeg",
 ];
 
 export default function StackedImageSlider() {
@@ -19,6 +20,10 @@ export default function StackedImageSlider() {
     }, 1500);
     return () => clearInterval(interval);
   }, [imageCount]);
+  const getRotation = (idx) => {
+    const rotationPattern = ["3deg", "0deg", "-3deg", "1deg"]; 
+    return rotationPattern[idx % rotationPattern.length];
+  };
 
   return (
     <section className="bg-[#F5EBDD] py-12 px-4">
@@ -37,6 +42,7 @@ export default function StackedImageSlider() {
           {images.map((img, idx) => {
             const isActive = idx === currentIndex;
             const offset = (idx - currentIndex) * 6;
+            const activeRotation = getRotation(idx);
             return (
               <Image
                 key={idx}
@@ -52,24 +58,22 @@ export default function StackedImageSlider() {
                   shadow-lg
                   ${
                     isActive
-                      ? "z-30 scale-105 opacity-100 rotate-[3deg]"
-                      : "z-10 scale-100 opacity-80 rotate-[-5deg]"
+                      ? "z-30 scale-105 opacity-100"
+                      : "z-10 scale-100 opacity-80 rotate-[-10deg]"
                   }
                 `}
                 style={{
                   zIndex: isActive ? 30 : 10,
                   transform: `translate(${offset}px, ${offset}px) ${
                     isActive
-                      ? "rotate(3deg) scale(1.05)"
-                      : "rotate(-5deg) scale(1)"
+                      ? `rotate(${activeRotation}) scale(1.05)`
+                      : "rotate(-10deg) scale(1)"
                   }`,
                 }}
               />
             );
           })}
         </div>
-
-        {/* Right large image */}
         <div className="border-10 border-white md:mr-10">
           <Image
             src={images[currentIndex]}

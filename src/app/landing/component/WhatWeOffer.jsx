@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card } from "../../../components/ui/card";
+// import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button.jsx";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -39,19 +41,19 @@ const offers = [
       "Understand the science of roasting and flavor profiling for the perfect cup.",
     image: "/coffeee.png",
   },
-  {
+{
     id: 5,
-    title: "Bakery Training Program",
+    title: "Bartending Training Program",
     description:
-      "Learn artisan baking, cake decoration, and pastry making with expert guidance.",
-    image: "/cake.png",
+      "Master espresso techniques, latte art, and customer service in our intensive barista course.",
+    image: "/bartending.jpg",
   },
   {
     id: 6,
-    title: "Bakery Training Program",
+    title: "Sushi Training Program",
     description:
-      "Learn artisan baking, cake decoration, and pastry making with expert guidance.",
-    image: "/cake.png",
+      "From basic rolls to advanced techniques, get hands-on training in authentic sushi preparation.",
+    image: "/sushi.png",
   },
   {
     id: 7,
@@ -60,12 +62,12 @@ const offers = [
       "Learn artisan baking, cake decoration, and pastry making with expert guidance.",
     image: "/cake.png",
   },
-  {
-    id: 8,
-    title: "Bakery Training Program",
+{
+    id: 4,
+    title: "Coffee Roasting Program",
     description:
-      "Learn artisan baking, cake decoration, and pastry making with expert guidance.",
-    image: "/cake.png",
+      "Understand the science of roasting and flavor profiling for the perfect cup.",
+    image: "/coffeee.png",
   },
 ];
 

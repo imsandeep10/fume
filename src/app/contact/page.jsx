@@ -1,41 +1,42 @@
 "use client";
 import React from "react";
-import { MapPin, Phone, Mail, Facebook, Instagram } from "lucide-react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import Hero from "@/Navigation/Hero";
-
+import { FaFacebook, FaInstagram, FaPhoneAlt, FaTiktok } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
+import { IoLocationSharp } from "react-icons/io5";
+import { ContactSchema } from "./data/Contactvalidation";
+import Hero from "../../Navigation/Hero";
+import Head from "next/head";
+import toast, { Toaster } from "react-hot-toast";
 const breadcrumbs = [
   { label: "Home", href: "/" },
   { label: "Contact", href: "/contact" },
 ];
-
 const heroImages = [
   { src: "/hero1.png", alt: "Coffee 1" },
   { src: "/hero2.png", alt: "Coffee 2" },
   { src: "/hero3.png", alt: "Coffee 3" },
   { src: "/hero4.png", alt: "Coffee 4" },
 ];
-
-// Yup validation schema
-const ContactSchema = Yup.object().shape({
-  fullName: Yup.string().required("Full Name is required"),
-  email: Yup.string().email("Invalid email address").required("Email is required"),
-  phone: Yup.string()
-    .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
-    .required("Phone number is required"),
-  subject: Yup.string().required("Subject is required"),
-  message: Yup.string().required("Message is required"),
-});
-
-const ContactSection = () => {
+const Page = () => {
   return (
     <>
+      <Head>
+        <title>Contact Us | Your Coffee School</title>
+        <meta
+          name="description"
+          content="Get in touch with Your Coffee School in Nepal. Reach out for inquiries about our barista courses, coffee training, workshops, or any other information."
+        />
+        <meta
+          name="keywords"
+          content="Contact Coffee School, Coffee Training Nepal, Barista Courses, Coffee Workshops, Coffee School Nepal, Coffee Education"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Toaster position="top-right" reverseOrder={false} />
       <Hero images={heroImages} breadcrumbs={breadcrumbs} />
-
       <section className="min-h-screen bg-[#FFFCFA] py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
           <header className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-[#4A3F3F] mb-2">
               Get in Touch
@@ -44,10 +45,7 @@ const ContactSection = () => {
               Questions? Feedback? Reach out!
             </p>
           </header>
-
-          {/* Map + Form */}
           <div className="grid lg:grid-cols-2 gap-10 items-start">
-            {/* Form */}
             <div className="order-1 lg:order-2">
               <Formik
                 initialValues={{
@@ -60,7 +58,7 @@ const ContactSection = () => {
                 validationSchema={ContactSchema}
                 onSubmit={(values, { resetForm }) => {
                   console.log("Form submitted:", values);
-                  alert("form submitted successfully",values);
+                  toast.success("Form submitted successfully!");
                   resetForm();
                 }}
               >
@@ -83,7 +81,6 @@ const ContactSection = () => {
                         className="text-red-500 text-sm mt-1"
                       />
                     </div>
-
                     <div>
                       <Field
                         type="email"
@@ -101,7 +98,6 @@ const ContactSection = () => {
                         className="text-red-500 text-sm mt-1"
                       />
                     </div>
-
                     <div>
                       <Field
                         type="tel"
@@ -119,7 +115,6 @@ const ContactSection = () => {
                         className="text-red-500 text-sm mt-1"
                       />
                     </div>
-
                     <div>
                       <Field
                         type="text"
@@ -137,7 +132,6 @@ const ContactSection = () => {
                         className="text-red-500 text-sm mt-1"
                       />
                     </div>
-
                     <div>
                       <Field
                         as="textarea"
@@ -166,51 +160,44 @@ const ContactSection = () => {
                   </Form>
                 )}
               </Formik>
-
-              {/* Social Links */}
               <div className="mt-8 flex justify-center space-x-6">
-                <a className="w-12 h-12 bg-[#F5EBDD80] rounded-full flex items-center justify-center hover:bg-orange-200">
-                  <Facebook className="w-8 h-8 text-[#FFA828]" />
+                <a
+                  href="https://www.facebook.com/fumecoffee"
+                  className="w-12 h-12 bg-[#F5EBDD80] rounded-full flex items-center justify-center hover:bg-orange-200"
+                >
+                  <FaFacebook className="w-8 h-8 text-[#FFA828]" />
                 </a>
-                <a className="w-12 h-12 bg-[#F5EBDD80] rounded-full flex items-center justify-center hover:bg-orange-200">
-                  <Instagram className="w-8 h-8 text-[#FFA828]" />
+                <a
+                  href="https://www.instagram.com/fumecoffeetrainingschool23/"
+                  className="w-12 h-12 bg-[#F5EBDD80] rounded-full flex items-center justify-center hover:bg-orange-200"
+                >
+                  <FaInstagram className="w-8 h-8 text-[#FFA828]" />
                 </a>
-                <a className="w-12 h-12 bg-[#F5EBDD80] rounded-full flex items-center justify-center hover:bg-orange-200">
-                  <svg
-                    className="w-8 h-8 text-[#FFA828]"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
+                <a
+                  href="https://www.tiktok.com/search?q=fume%20coffee&t=1758190667369"
+                  className="w-12 h-12 bg-[#F5EBDD80] rounded-full flex items-center justify-center hover:bg-orange-200"
+                >
+                  <FaTiktok className="w-8 h-8 text-[#FFA828]" />
                 </a>
               </div>
             </div>
-
-            {/* Map + Contact Info */}
             <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start mt-4">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.56993822675!2d83.46232507578047!3d27.699683976187043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39968700617e1c89%3A0x6b734339d6ce40b6!2sSynth%20Bit%20Group%20Pvt%20Ltd!5e0!3m2!1sen!2snp!4v1755597087556!5m2!1sen!2snp"
-                className="w-full lg:w-5/6 h-80 md:h-[500px] rounded-lg shadow"
-                allowFullScreen
-                loading="lazy"
-              />
-              {/* Contact Info */}
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.56993822675!2d83.46232507578047!3d27.699683976187043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39968700617e1c89%3A0x6b734339d6ce40b6!2sSynth%20Bit%20Group%20Pvt%20Ltd!5e0!3m2!1sen!2snp!4v1755597087556!5m2!1sen!2snp" className="w-full lg:w-5/6 h-80 md:h-[500px] rounded-lg shadow" allowFullScreen loading="lazy" />
               <div className="mt-8 lg:mt-16 bg-[#F5EBDD40] rounded-lg shadow-lg p-8 w-full lg:w-5/6">
                 <h3 className="text-2xl font-bold text-[#4A3F3F] mb-6">
                   Contact Info
                 </h3>
                 <div className="flex flex-col gap-y-4">
                   <div className="flex items-center space-x-3 text-[#4A3F3F]">
-                    <MapPin className="w-5 h-5 text-[#FFA828]" />
+                    <IoLocationSharp className="w-5 h-5 text-[#FFA828]" />
                     <span>Amarpath, Butwal</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-[#FFA828]" />
+                    <FaPhoneAlt className="w-5 h-5 text-[#FFA828]" />
                     <span>9857077828, 9762345120</span>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-[#FFA828]" />
+                    <IoMdMail className="w-5 h-5 text-[#FFA828]" />
                     <span>info@fumecoffeetraining.com</span>
                   </div>
                 </div>
@@ -223,4 +210,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+export default Page;

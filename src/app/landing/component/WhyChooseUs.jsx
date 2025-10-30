@@ -68,23 +68,17 @@ export default function WhyChooseUs() {
                          hover:shadow-xl hover:-translate-y-2 transform transition-all duration-300 
                          relative overflow-hidden min-h-[250px]"
             >
-              {/* Coffee glow effect */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-gradient-to-tr from-[#5C3A21] via-[#D1A06F] to-[#5C3A21] rounded-xl blur-2xl transition duration-500"></div>
 
-              {/* Icon wrapper (fixed size) */}
               <div className="flex items-center justify-center mb-4 mx-auto">
                 <div className="w-14 h-14 flex items-center justify-center rounded-full bg-[#5C3A21] 
                                 group-hover:scale-110 transition duration-300">
                   {feature.icon}
                 </div>
               </div>
-
-              {/* Title */}
               <h3 className="text-xl font-semibold text-[#5C3A21] mb-2 group-hover:text-[#3D220F] transition">
                 {feature.title}
               </h3>
-
-              {/* Description */}
               <p className="text-[#7D5336] text-sm group-hover:text-[#5C3A21]  transition">
                 {feature.description}
               </p>

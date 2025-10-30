@@ -6,7 +6,6 @@ import WhyChooseUs from './landing/component/WhyChooseUs'
 import Testimonial from './landing/component/Testimonial'
 import Gallery from './landing/component/Gallery'
 import JoinUs from './landing/component/JoinUs'
-
 const page = () => {
   return (
 <>
@@ -20,5 +19,4 @@ const page = () => {
 </>
   )
 }
-
 export default page

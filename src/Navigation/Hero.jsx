@@ -20,9 +20,7 @@ const Hero = ({ images, breadcrumbs }) => {
           </div>
         ))}
       </div>
-
-      {/* Breadcrumb */}
-      <nav className="bg-[#FFFCF9] shadow-md px-6 py-3 pl-20 ">
+      <nav className="bg-[#FFFCF9] shadow-md px-6 py-3 pl-20 hidden lg:block">
         <ol className="flex items-center space-x-2 text-sm text-[#3D220F]">
           {breadcrumbs.map((crumb, index) => (
             <li key={index} className="flex items-center">

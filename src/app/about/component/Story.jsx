@@ -50,12 +50,8 @@ const Story = () => {
             different levels of expertise.
           </p>
         </div>
-
-        {/* Right Images Section */}
         <div className="relative flex items-center gap-6 md:gap-10 justify-center w-full h-auto mt-10 transform scale-90 sm:scale-95 md:scale-100">
-          {/* Coffee beans with background circles */}
           <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 flex flex-col justify-between items-center pointer-events-none">
-            {/* Top Bean */}
             <div className="relative w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 mt-2 sm:mt-3 md:mt-4">
               <Image
                 src="/beanback1.png"
@@ -71,8 +67,6 @@ const Story = () => {
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rotate-12 md:-mt-10 md:-ml-2 -mt-6 -ml-2"
               />
             </div>
-
-            {/* Bottom Bean */}
             <div className="relative w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 mb-2 sm:mb-3 md:mb-4">
               <Image
                 src="/beanback.png"
@@ -89,8 +83,6 @@ const Story = () => {
               />
             </div>
           </div>
-
-          {/* Left big oval image */}
           <div className="relative flex-shrink-0 group">
             <div
               className={`absolute -top-2 -left-2 ${images[0].borderExtra} border-[1px] border-[#3D220F] rounded-full ${images[0].borderRotate} transition duration-500 group-hover:shadow-[0_0_20px_#7D5336]`}
@@ -106,8 +98,6 @@ const Story = () => {
               />
             </div>
           </div>
-
-          {/* Right stacked small ovals */}
           <div className="flex flex-col gap-8 md:gap-14 flex-shrink-0 pt-2 pb-2 md:pt-4 md:pb-4">
             {images.slice(1).map((img, i) => (
               <div key={i} className="relative group">

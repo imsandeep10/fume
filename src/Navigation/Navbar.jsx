@@ -8,27 +8,25 @@ import {
   SheetContent,
   SheetTrigger,
   SheetClose,
-} from "@/components/ui/sheet";
-import { navLinks } from "./Data";
+} from "../components/ui/sheet";
+import { navLinks } from "./Data"; 
 
 const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
 
   return (
-    <header className=" sticky top-0 left-0 w-full h-20  bg-[#97887E] backdrop-blur-md z-40 shadow-sm flex items-center">
-      <div className="container w-11/12 mx-auto flex items-center justify-between px-4 lg:px-0">
-        {/* Logo */}
+    <header className="w-full bg-[#97887E] backdrop-blur-md sticky top-0 z-50 shadow-sm">
+      <div className="container w-11/12 mx-auto py-4 flex items-center justify-between">
         <Link href="/" className="transition-transform hover:scale-105">
           <Image
             src="/fumelogo.png"
             alt="logo"
-            width={150}
-            height={64}
-            className="h-16 w-auto object-contain"
+            width={200}
+            height={200}
+            className="object-cover w-full h-16"
           />
         </Link>
 
-        {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-20 relative">
           {navLinks.map((link, index) => (
             <div
@@ -46,7 +44,7 @@ const Navbar = () => {
                 {link.children && (
                   <ChevronDown
                     size={16}
-                    className={`ml-1 transition-transform ${
+                    className={`ml-1 transition-transform duration-0 ${
                       openDropdown === link.label ? "rotate-180" : ""
                     }`}
                   />
@@ -54,12 +52,16 @@ const Navbar = () => {
               </div>
 
               {link.children && openDropdown === link.label && (
-                <div className="absolute left-0 w-48 bg-white text-[#4A3F3F] shadow-lg z-50 rounded-md overflow-hidden">
+                <div 
+                  className="absolute left-0  w-48   bg-white text-[#4A3F3F]  shadow-lg z-50"
+                  onMouseEnter={() => setOpenDropdown(link.label)}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
                   {link.children.map((child, i) => (
                     <Link
                       key={i}
                       href={child.href}
-                      className="block px-4 py-2 hover:bg-gray-100"
+                      className="block px-4 py-2 hover:bg-gray-100 "
                     >
                       {child.label}
                     </Link>
@@ -69,7 +71,6 @@ const Navbar = () => {
             </div>
           ))}
 
-          {/* Enroll Button */}
           <Link
             href="/enroll"
             className="ml-4 px-6 py-2.5 text-[#3D220F] bg-[#EBA747] rounded-full hover:bg-[#3D220F] hover:text-white transition"
@@ -77,8 +78,6 @@ const Navbar = () => {
             Enroll Now
           </Link>
         </nav>
-
-        {/* Mobile Sidebar */}
         <Sheet>
           <SheetTrigger asChild>
             <button className="lg:hidden text-[#3D220F]">
@@ -87,11 +86,16 @@ const Navbar = () => {
           </SheetTrigger>
           <SheetContent
             side="right"
-            className="bg-[#97887E] text-white flex flex-col justify-between border-none max-w-[90vw]"
+            className="bg-[#97887E] text-white flex flex-col justify-between border-none"
           >
             <div className="flex flex-col space-y-8 mt-20 ml-10">
               {navLinks.map((link, index) => (
-                <div key={index} className="flex flex-col">
+                <div 
+                  key={index} 
+                  className="flex flex-col"
+                  onMouseEnter={() => link.children && setOpenDropdown(link.label)}
+                  onMouseLeave={() => link.children && setOpenDropdown(null)}
+                >
                   <div className="flex items-center cursor-pointer hover:text-[#EBA747]">
                     {link.href ? (
                       <SheetClose asChild>
@@ -107,17 +111,12 @@ const Navbar = () => {
                         className={`ml-1 transition-transform duration-300 ${
                           openDropdown === link.label ? "rotate-180" : ""
                         }`}
-                        onClick={() =>
-                          setOpenDropdown(
-                            openDropdown === link.label ? null : link.label
-                          )
-                        }
                       />
                     )}
                   </div>
 
                   {link.children && openDropdown === link.label && (
-                    <div className="mt-2 flex flex-col space-y-2 bg-[#f9f7f3] text-[#4A3F3F] py-2 px-3 w-48 rounded-lg">
+                    <div className="mt-2 flex flex-col space-y-2 bg-[#f9f7f3] text-[#4A3F3F] py-2 px-3 w-48 ">
                       {link.children.map((child, i) => (
                         <SheetClose asChild key={i}>
                           <Link
@@ -134,13 +133,11 @@ const Navbar = () => {
                 </div>
               ))}
             </div>
-
-            {/* Enroll Button Bottom */}
             <div className="mb-10 w-full flex justify-center items-center">
               <SheetClose asChild>
                 <Link
                   href="/enroll"
-                  className="block mb-20 text-center px-6 py-3 text-[#4A3F3F] bg-[#EBA747] rounded-full hover:bg-[#3D220F] hover:text-white transition w-32"
+                  className="block mb-20 text-center px-6 py-3 text-[#4A3F3F] bg-[#EBA747] rounded-full hover:bg-[#3D220F] hover:text-white  transition w-32"
                 >
                   Enroll Now
                 </Link>

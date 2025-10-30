@@ -1,4 +1,7 @@
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
+// import { Button } from "../../../../components/ui/button";
+import { Button } from "../../../components/ui/button.jsx";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,12 +24,12 @@ export default function JoinUs() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center ">
         {/* Text Content */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left w-full justify-start sm:items-start  lg:-ml-16 ">
-          <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold mb-4  ">
+          <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold mb-4">
             Join Our Upcoming Events
           </h2>
           <p className="text-base sm:text-lg text-gray-200 mb-8 max-w-md">
-            Lorem ipsum dolor sit amet consectetur. Etiam diam sed aenean id
-            cursus fames eget aliquam sit. Sapien bibendum.
+            Learn the art of coffee making with our expert trainers. Enhance
+            your barista skills and explore exciting new brewing techniques.
           </p>
           <Link href={`/register`}>
             <Button className="bg-[#EBA747] text-[#3D220F] font-semibold px-6 py-3 rounded-full hover:bg-[#3D220F] hover:text-white transition duration-300 h-12 w-42">

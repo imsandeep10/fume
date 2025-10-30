@@ -6,7 +6,6 @@ import Link from "next/link";
 const SecondHero = ({ image, breadcrumbs }) => {
   return (
     <section className="w-full">
-      {/* Hero Single Image */}
       <div className="relative w-full h-40 sm:h-56 md:h-72 lg:h-80">
         <Image
           src={image.src}
@@ -17,17 +16,20 @@ const SecondHero = ({ image, breadcrumbs }) => {
         />
       </div>
 
-      {/* Breadcrumb */}
-      <nav className="bg-[#FFFCF9] px-6 py-3 pl-20 -ml-10 ">
+      <nav className="bg-[#FFFCF9] px-6 py-3 pl-20 -ml-10 hidden lg:block">
         <ol className="flex items-center space-x-2 text-sm text-[#3D220F]">
           {breadcrumbs.map((crumb, index) => (
             <li key={index} className="flex items-center">
-              <Link
-                href={crumb.href}
-                className="hover:text-gray-900 transition-colors"
-              >
-                {crumb.label}
-              </Link>
+              {crumb.href ? (
+                <Link
+                  href={crumb.href}
+                  className=" transition-colors"
+                >
+                  {crumb.label}
+                </Link>
+              ) : (
+                <span >{crumb.label}</span>
+              )}
               {index < breadcrumbs.length - 1 && (
                 <span className="mx-2">
                   <ChevronRight />
