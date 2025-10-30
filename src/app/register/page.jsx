@@ -3,7 +3,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { validationSchema } from "./data/Registervalidation";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import Head from "next/head";
-import Hero from "@/Navigation/Hero";
+import Hero from "../../Navigation/Hero";
 import toast, { Toaster } from "react-hot-toast";
 const breadcrumbs = [
   { label: "Home", href: "/" },
